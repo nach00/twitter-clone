@@ -1,1 +1,8 @@
-@import "bootstrap";
+// @import "bootstrap";
+
+@import "~bootstrap/scss/bootstrap"; // Note the ~ for node_modules
+
+// Your custom global styles can go here
+body {
+  // Example global style
+}
