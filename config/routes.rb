@@ -1,23 +1,51 @@
+# ~/github/altcademy/twitter-clone/config/routes.rb
+
 Rails.application.routes.draw do
-  root 'static_pages#home'
-
   namespace :api do
-    # USERS
-    post '/users'                  => 'users#create'
+    namespace :v1 do
+      # Authentication
+      post '/auth/register', to: 'auth#register'
+      post '/auth/login', to: 'auth#login'
+      delete '/auth/logout', to: 'auth#logout'
+      get '/auth/me', to: 'auth#me'
 
-    # SESSIONS
-    post '/sessions'               => 'sessions#create'
-    get  '/authenticated'          => 'sessions#authenticated'
-    delete '/sessions'             => 'sessions#destroy'
+      # Users
+      resources :users, param: :username, only: [:show] do
+        member do
+          post :follow
+          delete :unfollow
+          get :followers
+          get :following
+          get :tweets, to: 'tweets#user_tweets' # Fixed route
+        end
+      end
 
-    # TWEETS
-    post '/tweets'                 => 'tweets#create'
-    get  '/tweets'                 => 'tweets#index'
-    delete '/tweets/:id'           => 'tweets#destroy'
-    get  '/users/:username/tweets' => 'tweets#index_by_user'
-    get  '/tweets/search/:keyword' => 'tweets#search'
+      # Current user profile
+      get '/me', to: 'users#me'
+      put '/me', to: 'users#update_me'
+
+      # Tweets
+      resources :tweets, only: %i[index create show destroy] do
+        member do
+          post :like
+          delete :unlike
+        end
+      end
+
+      # Feed
+      get '/feed', to: 'tweets#feed'
+
+      # Search
+      get '/search/tweets/:keyword', to: 'tweets#search'
+      get '/search/users/:keyword', to: 'users#search'
+    end
   end
 
-  get '*path' => 'static_pages#home'
-  # if you are using active storage to upload and store images, comment the above line
+  # Serve frontend assets  
+  get '/assets/*path', to: 'application#serve_frontend_asset', format: false
+
+  root 'application#fallback_index_html'
+  get '*path', to: 'application#fallback_index_html', constraints: lambda { |req|
+    !req.xhr? && req.format.html?
+  }
 end

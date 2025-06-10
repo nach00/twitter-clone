@@ -1,0 +1,1 @@
+{"tweet": {"message": "This tweet is intentionally very long to test the 280 character limit validation in the backend. It should exceed the maximum allowed length and return a validation error. This message is over 280 characters to trigger the validation error in the Tweet model when trying to create a new tweet."}}

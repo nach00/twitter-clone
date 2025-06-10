@@ -1,0 +1,194 @@
+/* frontend/src/index.css */
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #f8f9fa;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #f8f9fa;
+}
+
+/* Custom Twitter-like styling */
+.btn-primary {
+	background-color: #1da1f2;
+	border-color: #1da1f2;
+}
+
+.btn-primary:hover {
+	background-color: #1a91da;
+	border-color: #1a91da;
+}
+
+.btn-outline-primary {
+	color: #1da1f2;
+	border-color: #1da1f2;
+}
+
+.btn-outline-primary:hover {
+	background-color: #1da1f2;
+	border-color: #1da1f2;
+}
+
+.navbar-brand {
+	font-size: 1.5rem;
+}
+
+.card {
+	border: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 12px;
+}
+
+.card-body {
+	padding: 1.25rem;
+}
+
+/* Tweet card styling */
+.tweet-card {
+	transition: box-shadow 0.2s ease;
+}
+
+.tweet-card:hover {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	background-color: #f8f9fa;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #c1c1c1;
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #a8a8a8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.container-fluid {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+}
+
+/* Loading spinner customization */
+.spinner-border-sm {
+	width: 1rem;
+	height: 1rem;
+}
+
+/* Form enhancements */
+.form-control:focus {
+	border-color: #1da1f2;
+	box-shadow: 0 0 0 0.2rem rgba(29, 161, 242, 0.25);
+}
+
+/* Profile picture styling */
+.profile-picture {
+	object-fit: cover;
+}
+
+/* Link styling */
+a {
+	color: #1da1f2;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #1a91da;
+	text-decoration: underline;
+}
+
+/* Custom App.css */
+/* frontend/src/App.css */
+.App {
+	min-height: 100vh;
+	background-color: #f8f9fa;
+}
+
+.App-header {
+	text-align: center;
+	padding: 2rem;
+}
+
+/* Navigation styling */
+.navbar {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content area */
+main {
+	padding-top: 1rem;
+	min-height: calc(100vh - 76px); /* Adjust based on navbar height */
+}
+
+/* Custom button styles */
+.btn-twitter {
+	background-color: #1da1f2;
+	border-color: #1da1f2;
+	color: white;
+}
+
+.btn-twitter:hover {
+	background-color: #1a91da;
+	border-color: #1a91da;
+	color: white;
+}
+
+/* Tweet composer styling */
+.tweet-composer {
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid #e9ecef;
+}
+
+/* Profile header styling */
+.profile-header {
+	background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%);
+	color: white;
+	border-radius: 12px 12px 0 0;
+}
+
+/* Utility classes */
+.text-twitter {
+	color: #1da1f2;
+}
+
+.bg-twitter {
+	background-color: #1da1f2;
+}
+
+.border-twitter {
+	border-color: #1da1f2;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
