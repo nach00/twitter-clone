@@ -23,6 +23,18 @@ export const TweetCard: React.FC<TweetCardProps> = ({
   const [isLiked, setIsLiked] = useState(tweet.is_liked_by_current_user);
   const [likesCount, setLikesCount] = useState(tweet.likes_count);
 
+  // Handle missing user data gracefully
+  if (!tweet.user) {
+    console.error('Tweet missing user data:', tweet);
+    return (
+      <article className="tweet-card">
+        <div style={{ padding: 'var(--space-md)', color: 'var(--industrial-gray)' }}>
+          Error: Tweet data incomplete
+        </div>
+      </article>
+    );
+  }
+
   const handleLike = async () => {
     if (isLiking) return;
 

@@ -13,6 +13,9 @@ export class AuthService {
 			"/auth/login",
 			credentials,
 		);
+		if (!response.user) {
+			throw new Error('Invalid response: user data missing');
+		}
 		const authUser: AuthUser = { ...response.user, token: response.token };
 		apiService.setAuthToken(response.token);
 		return authUser;
@@ -23,6 +26,9 @@ export class AuthService {
 			"/auth/register",
 			{ user: credentials },
 		);
+		if (!response.user) {
+			throw new Error('Invalid response: user data missing');
+		}
 		const authUser: AuthUser = { ...response.user, token: response.token };
 		apiService.setAuthToken(response.token);
 		return authUser;
@@ -40,6 +46,9 @@ export class AuthService {
 		const response = await apiService.get<{ data: { attributes: User } }>(
 			"/auth/me",
 		);
+		if (!response.data?.attributes) {
+			throw new Error('Invalid response: user data missing');
+		}
 		return response.data.attributes;
 	}
 

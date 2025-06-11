@@ -9,6 +9,7 @@ interface AuthContextType {
 	login: (credentials: LoginCredentials) => Promise<void>;
 	register: (credentials: RegisterCredentials) => Promise<void>;
 	logout: () => Promise<void>;
+	clearAuth: () => void;
 	isAuthenticated: boolean;
 }
 
@@ -77,12 +78,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 		}
 	};
 
+	const clearAuth = () => {
+		authService.clearAuth();
+		setUser(null);
+	};
+
 	const value: AuthContextType = {
 		user,
 		isLoading,
 		login,
 		register,
 		logout,
+		clearAuth,
 		isAuthenticated: !!user,
 	};
 
