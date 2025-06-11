@@ -15,7 +15,9 @@ class TweetSerializer
         tweets_count: tweet.user.tweets_count,
         followers_count: tweet.user.followers_count,
         following_count: tweet.user.following_count,
-        created_at: tweet.user.created_at
+        created_at: tweet.user.created_at,
+        is_following: false, # TODO: implement following logic
+        is_followed_by: false # TODO: implement following logic
       }
     else
       nil

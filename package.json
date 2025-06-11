@@ -13,8 +13,26 @@
 		"lint": "cd frontend && npm run lint",
 		"lint:fix": "cd frontend && npm run lint:fix",
 		"type-check": "cd frontend && npm run type-check",
-		"heroku-postbuild": "cd frontend && npm install && npm run build"
+		"heroku-postbuild": "npm run build"
 	},
-	"dependencies": {},
-	"devDependencies": {}
+	"dependencies": {
+		"@types/bootstrap": "^5.2.10",
+		"axios": "^1.6.2",
+		"bootstrap": "^5.3.2",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.20.1"
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.39",
+		"@types/react-dom": "^18.2.17",
+		"@typescript-eslint/eslint-plugin": "^6.13.1",
+		"@typescript-eslint/parser": "^6.13.1",
+		"@vitejs/plugin-react": "^4.2.0",
+		"eslint": "^8.54.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.4",
+		"typescript": "^5.3.2",
+		"vite": "^5.0.5"
+	}
 }
