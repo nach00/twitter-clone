@@ -17,87 +17,37 @@ export const Navbar: React.FC = () => {
 	};
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+		<nav className="navbar">
 			<div className="container-fluid">
-				<Link className="navbar-brand fw-bold" to="/">
-					🐦 Twitter Clone
+				<Link className="navbar-brand" to="/">
+					CHIRP
 				</Link>
 
-				<button
-					className="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarNav"
-				>
-					<span className="navbar-toggler-icon"></span>
-				</button>
-
-				<div className="collapse navbar-collapse" id="navbarNav">
+				<div className="navbar-nav">
 					{isAuthenticated ? (
 						<>
-							<ul className="navbar-nav me-auto">
-								<li className="nav-item">
-									<Link className="nav-link" to="/">
-										Home
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link" to="/explore">
-										Explore
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link" to={`/profile/${user?.username}`}>
-										Profile
-									</Link>
-								</li>
-							</ul>
-
-							<ul className="navbar-nav">
-								<li className="nav-item dropdown">
-									<a
-										className="nav-link dropdown-toggle"
-										href="#"
-										id="navbarDropdown"
-										role="button"
-										data-bs-toggle="dropdown"
-									>
-										@{user?.username}
-									</a>
-									<ul className="dropdown-menu">
-										<li>
-											<Link
-												className="dropdown-item"
-												to={`/profile/${user?.username}`}
-											>
-												My Profile
-											</Link>
-										</li>
-										<li>
-											<hr className="dropdown-divider" />
-										</li>
-										<li>
-											<button className="dropdown-item" onClick={handleLogout}>
-												Logout
-											</button>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<Link className="nav-link uppercase weight-black" to="/">
+								Feed
+							</Link>
+							<Link className="nav-link uppercase weight-black" to="/explore">
+								Explore
+							</Link>
+							<Link className="nav-link uppercase weight-black" to={`/profile/${user?.username}`}>
+								Profile
+							</Link>
+							<button className="btn btn-outline" onClick={handleLogout}>
+								Logout
+							</button>
 						</>
 					) : (
-						<ul className="navbar-nav ms-auto">
-							<li className="nav-item">
-								<Link className="nav-link" to="/login">
-									Login
-								</Link>
-							</li>
-							<li className="nav-item">
-								<Link className="nav-link" to="/register">
-									Register
-								</Link>
-							</li>
-						</ul>
+						<>
+							<Link className="nav-link uppercase weight-black" to="/login">
+								Login
+							</Link>
+							<Link className="nav-link uppercase weight-black" to="/register">
+								Sign Up
+							</Link>
+						</>
 					)}
 				</div>
 			</div>

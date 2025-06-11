@@ -63,90 +63,89 @@ export const TweetCard: React.FC<TweetCardProps> = ({
   const isOwner = currentUser?.id === tweet.user.id;
 
   return (
-    <div className="card mb-3">
-      <div className="card-body">
-        <div className="d-flex justify-content-between align-items-start">
-          <div className="d-flex">
-            <div className="me-3">
-              {tweet.user.profile_picture_url ? (
-                <img
-                  src={tweet.user.profile_picture_url}
-                  alt={`${tweet.user.username}'s avatar`}
-                  className="rounded-circle"
-                  width="48"
-                  height="48"
-                />
-              ) : (
-                <div
-                  className="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white"
-                  style={{ width: "48px", height: "48px" }}
-                >
-                  {tweet.user.username.charAt(0).toUpperCase()}
-                </div>
-              )}
-            </div>
-            <div className="flex-grow-1">
-              <div className="d-flex align-items-center mb-1">
-                <Link
-                  to={`/profile/${tweet.user.username}`}
-                  className="text-decoration-none fw-bold me-2"
-                >
-                  @{tweet.user.username}
-                </Link>
-                <small className="text-muted">· {tweet.time_ago}</small>
-              </div>
-              <p className="mb-2">{tweet.message}</p>
-              {tweet.image_url && (
-                <img
-                  src={tweet.image_url}
-                  alt="Tweet image"
-                  className="img-fluid rounded mb-2"
-                  style={{ maxHeight: "300px" }}
-                />
-              )}
-            </div>
-          </div>
-          {isOwner && (
-            <div className="dropdown">
-              <button
-                className="btn btn-sm btn-outline-secondary dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
+    <article className="tweet-card">
+      <header className="tweet-header">
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--space-md)' }}>
+          <div className="profile-picture-container">
+            {tweet.user.profile_picture_url ? (
+              <img
+                src={tweet.user.profile_picture_url}
+                alt={`${tweet.user.username}'s avatar`}
+                className="profile-picture"
+                style={{ width: '48px', height: '48px' }}
+              />
+            ) : (
+              <div
+                className="profile-picture bg-signature"
+                style={{ 
+                  width: '48px', 
+                  height: '48px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--pure-black)',
+                  fontWeight: 'var(--font-weight-black)'
+                }}
               >
-                ⋯
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <button
-                    className="dropdown-item text-danger"
-                    onClick={handleDelete}
-                    disabled={isDeleting}
-                  >
-                    {isDeleting ? "Deleting..." : "Delete Tweet"}
-                  </button>
-                </li>
-              </ul>
+                {tweet.user.username.charAt(0).toUpperCase()}
+              </div>
+            )}
+          </div>
+          
+          <div style={{ flex: 1 }}>
+            <div className="tweet-meta">
+              <Link
+                to={`/profile/${tweet.user.username}`}
+                className="weight-black"
+                style={{ marginRight: 'var(--space-sm)' }}
+              >
+                @{tweet.user.username}
+              </Link>
+              <span>· {tweet.time_ago}</span>
             </div>
+            
+            <div className="tweet-content">
+              {tweet.message}
+            </div>
+            
+            {tweet.image_url && (
+              <img
+                src={tweet.image_url}
+                alt="Tweet image"
+                style={{ 
+                  width: '100%',
+                  maxHeight: '300px',
+                  objectFit: 'cover',
+                  border: '2px solid var(--pure-black)',
+                  borderRadius: 'var(--radius-sharp)',
+                  marginTop: 'var(--space-md)'
+                }}
+              />
+            )}
+          </div>
+          
+          {isOwner && (
+            <button
+              className="btn btn-outline"
+              onClick={handleDelete}
+              disabled={isDeleting}
+              style={{ fontSize: '0.75rem', padding: 'var(--space-xs) var(--space-sm)' }}
+            >
+              {isDeleting ? "..." : "DELETE"}
+            </button>
           )}
         </div>
+      </header>
 
-        <div className="d-flex align-items-center mt-2">
-          <button
-            className={`btn btn-sm ${
-              isLiked ? "btn-danger" : "btn-outline-danger"
-            } me-3`}
-            onClick={handleLike}
-            disabled={isLiking}
-          >
-            {isLiking ? (
-              <span className="spinner-border spinner-border-sm me-1" />
-            ) : (
-              <span>{isLiked ? "❤️" : "🤍"}</span>
-            )}
-            {likesCount}
-          </button>
-        </div>
-      </div>
-    </div>
+      <footer className="tweet-actions">
+        <button
+          className={`tweet-action ${isLiked ? 'active' : ''}`}
+          onClick={handleLike}
+          disabled={isLiking}
+        >
+          {isLiking ? "..." : `${isLiked ? "♥" : "♡"} ${likesCount}`}
+        </button>
+      </footer>
+    </article>
   );
 };

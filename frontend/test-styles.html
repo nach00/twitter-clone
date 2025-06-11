@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virgil Abloh Style Test</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+        
+        :root {
+            --off-white: #f8f8f8;
+            --pure-black: #000000;
+            --pure-white: #ffffff;
+            --signature-orange: #ff6600;
+            --industrial-gray: #808080;
+            --concrete-gray: #c4c4c4;
+            --font-primary: "Inter", "Helvetica Neue", Arial, sans-serif;
+            --font-weight-black: 900;
+            --space-lg: 24px;
+            --radius-sharp: 2px;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: var(--font-primary);
+            background-color: var(--off-white);
+            color: var(--pure-black);
+        }
+        
+        .test-card {
+            background: var(--pure-white);
+            border: 2px solid var(--pure-black);
+            border-radius: var(--radius-sharp);
+            padding: var(--space-lg);
+            position: relative;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .test-card::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: -4px;
+            bottom: -4px;
+            background: var(--signature-orange);
+            border-radius: var(--radius-sharp);
+            z-index: -1;
+        }
+        
+        .test-title {
+            font-weight: var(--font-weight-black);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--pure-black);
+            margin: 0;
+        }
+        
+        .test-title::before {
+            content: '"';
+            color: var(--signature-orange);
+            margin-right: 0.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-card">
+        <h1 class="test-title">Virgil Abloh Style Test</h1>
+        <p>If you can see this with:</p>
+        <ul>
+            <li>✓ Off-white background</li>
+            <li>✓ Black bordered card with orange shadow</li>
+            <li>✓ Bold uppercase title with orange quote</li>
+            <li>✓ Inter font family</li>
+        </ul>
+        <p>Then the styles are working!</p>
+    </div>
+</body>
+</html>

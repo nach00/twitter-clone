@@ -54,82 +54,94 @@ export const TweetComposer: React.FC<TweetComposerProps> = ({
 	const remainingChars = 280 - message.length;
 
 	return (
-		<div className="card">
-			<div className="card-body">
-				<form onSubmit={handleSubmit}>
-					{error && (
-						<div className="alert alert-danger alert-sm mb-3">{error}</div>
-					)}
+		<div className="tweet-composer">
+			<form onSubmit={handleSubmit}>
+				{error && (
+					<div style={{
+						padding: 'var(--space-md)',
+						backgroundColor: '#ff6666',
+						color: 'var(--pure-white)',
+						borderRadius: 'var(--radius-sharp)',
+						marginBottom: 'var(--space-md)',
+						fontSize: '0.875rem',
+						fontWeight: 'var(--font-weight-bold)',
+						textTransform: 'uppercase',
+						letterSpacing: '0.05em'
+					}}>
+						{error}
+					</div>
+				)}
 
-					<div className="mb-3">
-						<textarea
-							className="form-control"
-							rows={3}
-							placeholder="What's happening?"
-							value={message}
-							onChange={(e) => setMessage(e.target.value)}
-							maxLength={280}
+				<textarea
+					className="form-control"
+					placeholder="WHAT'S HAPPENING?"
+					value={message}
+					onChange={(e) => setMessage(e.target.value)}
+					maxLength={280}
+					disabled={isLoading}
+					style={{
+						minHeight: '120px',
+						resize: 'none',
+						border: 'none',
+						fontSize: '1.1rem'
+					}}
+				/>
+
+				{image && (
+					<div style={{
+						display: 'flex',
+						alignItems: 'center',
+						gap: 'var(--space-md)',
+						padding: 'var(--space-md)',
+						backgroundColor: 'var(--off-white)',
+						borderRadius: 'var(--radius-sharp)',
+						marginTop: 'var(--space-md)'
+					}}>
+						<span className="uppercase weight-black">{image.name}</span>
+						<button
+							type="button"
+							className="btn btn-outline"
+							onClick={removeImage}
+							style={{ fontSize: '0.75rem' }}
+						>
+							Remove
+						</button>
+					</div>
+				)}
+
+				<div className="tweet-composer-actions">
+					<div>
+						<input
+							type="file"
+							accept="image/*"
+							onChange={handleImageChange}
+							style={{ display: 'none' }}
+							id="image-upload"
 							disabled={isLoading}
 						/>
-						<div className="d-flex justify-content-between align-items-center mt-2">
-							<small
-								className={`text-${remainingChars < 20 ? "danger" : "muted"}`}
-							>
-								{remainingChars} characters remaining
-							</small>
-						</div>
+						<label
+							htmlFor="image-upload"
+							className="btn btn-outline"
+							style={{ fontSize: '0.75rem', cursor: 'pointer' }}
+						>
+							Add Photo
+						</label>
 					</div>
 
-					{image && (
-						<div className="mb-3">
-							<div className="d-flex align-items-center">
-								<span className="me-2">📎 {image.name}</span>
-								<button
-									type="button"
-									className="btn btn-sm btn-outline-danger"
-									onClick={removeImage}
-								>
-									Remove
-								</button>
-							</div>
-						</div>
-					)}
-
-					<div className="d-flex justify-content-between align-items-center">
-						<div>
-							<input
-								type="file"
-								accept="image/*"
-								onChange={handleImageChange}
-								className="d-none"
-								id="image-upload"
-								disabled={isLoading}
-							/>
-							<label
-								htmlFor="image-upload"
-								className="btn btn-outline-secondary btn-sm"
-							>
-								📷 Add Photo
-							</label>
-						</div>
-
+					<div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)' }}>
+						<span className={`character-count ${remainingChars < 20 ? 'warning' : ''} ${remainingChars < 0 ? 'error' : ''}`}>
+							{remainingChars}
+						</span>
 						<button
 							type="submit"
 							className="btn btn-primary"
 							disabled={!message.trim() || isLoading || remainingChars < 0}
 						>
-							{isLoading ? (
-								<>
-									<span className="spinner-border spinner-border-sm me-2" />
-									Posting...
-								</>
-							) : (
-								"Tweet"
-							)}
+							{isLoading ? "POSTING..." : "POST"}
 						</button>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
 	);
 };

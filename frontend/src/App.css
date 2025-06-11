@@ -1,7 +1,287 @@
+/* Virgil Abloh-inspired App Layout */
 .App {
+	min-height: 100vh;
+	background-color: var(--off-white);
+	position: relative;
+}
+
+/* Main Layout Grid */
+.main-layout {
+	display: grid;
+	grid-template-columns: 1fr 600px 1fr;
+	gap: var(--space-xxl);
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: var(--space-xxl);
+}
+
+.main-content {
+	grid-column: 2;
+}
+
+/* Sidebar Elements */
+.sidebar-left,
+.sidebar-right {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xl);
+}
+
+.sidebar-widget {
+	background: var(--pure-white);
+	border: 2px solid var(--pure-black);
+	border-radius: var(--radius-sharp);
+	padding: var(--space-xxl);
+	position: relative;
+}
+
+.sidebar-widget::after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	right: -4px;
+	bottom: -4px;
+	background: var(--concrete-gray);
+	border-radius: var(--radius-sharp);
+	z-index: -1;
+}
+
+.sidebar-widget h3 {
+	margin: 0 0 var(--space-lg) 0;
+	font-size: 1.25rem;
+	font-weight: var(--font-weight-black);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+/* Hero Section */
+.hero-section {
+	text-align: center;
+	padding: var(--space-xxxxl) var(--space-xxl);
+	background: var(--pure-white);
+	border: 3px solid var(--pure-black);
+	margin-bottom: var(--space-xxl);
+	position: relative;
+}
+
+.hero-section::before {
+	content: 'SOCIAL MEDIA';
+	position: absolute;
+	top: var(--space-md);
+	right: var(--space-md);
+	font-size: 1rem;
+	color: var(--signature-orange);
+	font-weight: var(--font-weight-black);
+	letter-spacing: 0.1em;
+}
+
+.hero-title {
+	font-size: clamp(3.5rem, 8vw, 6rem);
+	font-weight: var(--font-weight-black);
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	line-height: 0.85;
+	margin-bottom: var(--space-xxl);
+	position: relative;
+}
+
+.hero-subtitle {
+	font-size: 1.5rem;
+	color: var(--industrial-gray);
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-weight: var(--font-weight-medium);
+}
+
+/* Authentication Layout */
+.auth-layout {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--off-white);
+	padding: var(--space-xxl);
+}
+
+.auth-card {
+	width: 100%;
+	max-width: 500px;
+	background: var(--pure-white);
+	border: 3px solid var(--pure-black);
+	border-radius: var(--radius-sharp);
+	padding: var(--space-xxxxl);
+	position: relative;
+}
+
+.auth-card::after {
+	content: '';
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	right: -6px;
+	bottom: -6px;
+	background: var(--signature-orange);
+	border-radius: var(--radius-sharp);
+	z-index: -1;
+}
+
+.auth-title {
+	text-align: center;
+	margin-bottom: var(--space-xxl);
+	font-size: 2.5rem;
+	font-weight: var(--font-weight-black);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+/* Tweet Composer */
+.tweet-composer {
+	background: var(--pure-white);
+	border: 2px solid var(--pure-black);
+	border-radius: var(--radius-sharp);
+	padding: var(--space-xxl);
+	margin-bottom: var(--space-xxl);
+	position: relative;
+}
+
+.tweet-composer::before {
+	content: 'POST';
+	position: absolute;
+	top: var(--space-sm);
+	right: var(--space-sm);
+	font-size: 1rem;
+	color: var(--signature-orange);
+	font-weight: var(--font-weight-black);
+	letter-spacing: 0.1em;
+}
+
+.tweet-composer textarea {
+	border: none;
+	resize: none;
+	font-family: var(--font-primary);
+	font-size: 1.25rem;
+	line-height: 1.5;
+	width: 100%;
+	min-height: 120px;
+	padding: var(--space-md);
+	background: transparent;
+}
+
+.tweet-composer textarea:focus {
+	outline: none;
+}
+
+.tweet-composer-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: var(--space-md);
+	padding-top: var(--space-md);
+	border-top: 1px solid var(--concrete-gray);
+}
+
+.character-count {
+	font-size: 1rem;
+	color: var(--industrial-gray);
+	font-weight: var(--font-weight-medium);
+}
+
+.character-count.warning {
+	color: var(--signature-orange);
+}
+
+.character-count.error {
+	color: red;
+}
+
+/* Profile Layout */
+.profile-layout {
+	display: grid;
+	gap: var(--space-xl);
+}
+
+.profile-banner {
+	height: 200px;
+	background: linear-gradient(45deg, var(--pure-black) 0%, var(--industrial-gray) 100%);
+	border: 3px solid var(--pure-black);
+	border-radius: var(--radius-sharp);
+	position: relative;
+	overflow: hidden;
+}
+
+.profile-info {
+	transform: translateY(-50px);
 	text-align: center;
 }
 
-.card {
-	padding: 2em;
+.profile-avatar {
+	width: 120px;
+	height: 120px;
+	border: 4px solid var(--pure-white);
+	border-radius: var(--radius-sharp);
+	margin: 0 auto var(--space-lg);
+	display: block;
+	box-shadow: 0 4px 0 var(--signature-orange);
+}
+
+.profile-stats {
+	display: flex;
+	justify-content: center;
+	gap: var(--space-xxl);
+	margin: var(--space-lg) 0;
+}
+
+.profile-stat {
+	text-align: center;
+}
+
+.profile-stat-number {
+	display: block;
+	font-size: 1.5rem;
+	font-weight: var(--font-weight-black);
+	color: var(--pure-black);
+}
+
+.profile-stat-label {
+	font-size: 0.875rem;
+	color: var(--industrial-gray);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: var(--font-weight-medium);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+	.main-layout {
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
+	}
+	
+	.main-content {
+		grid-column: 1;
+	}
+	
+	.sidebar-left,
+	.sidebar-right {
+		display: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.main-layout {
+		padding: var(--space-md);
+	}
+	
+	.hero-section {
+		padding: var(--space-xl) var(--space-md);
+	}
+	
+	.auth-card {
+		padding: var(--space-xl);
+	}
+	
+	.profile-stats {
+		gap: var(--space-lg);
+	}
 }

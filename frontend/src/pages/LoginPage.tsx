@@ -43,77 +43,83 @@ export const LoginPage: React.FC = () => {
 	};
 
 	return (
-		<div className="row justify-content-center mt-5">
-			<div className="col-md-6 col-lg-4">
-				<div className="card shadow">
-					<div className="card-body">
-						<div className="text-center mb-4">
-							<h2 className="card-title">Welcome Back</h2>
-							<p className="text-muted">Sign in to your account</p>
-						</div>
+		<div className="auth-layout">
+			<div className="auth-card">
+				<h1 className="auth-title">Login</h1>
 
-						{error && (
-							<div className="alert alert-danger" role="alert">
-								{error}
-							</div>
-						)}
-
-						<form onSubmit={handleSubmit}>
-							<div className="mb-3">
-								<label htmlFor="email" className="form-label">
-									Email
-								</label>
-								<input
-									type="email"
-									className="form-control"
-									id="email"
-									name="email"
-									value={formData.email}
-									onChange={handleChange}
-									required
-								/>
-							</div>
-
-							<div className="mb-3">
-								<label htmlFor="password" className="form-label">
-									Password
-								</label>
-								<input
-									type="password"
-									className="form-control"
-									id="password"
-									name="password"
-									value={formData.password}
-									onChange={handleChange}
-									required
-								/>
-							</div>
-
-							<button
-								type="submit"
-								className="btn btn-primary w-100"
-								disabled={isLoading}
-							>
-								{isLoading ? (
-									<>
-										<span className="spinner-border spinner-border-sm me-2" />
-										Signing In...
-									</>
-								) : (
-									"Sign In"
-								)}
-							</button>
-						</form>
-
-						<div className="text-center mt-3">
-							<p className="mb-0">
-								Don't have an account?{" "}
-								<Link to="/register" className="text-decoration-none">
-									Sign up
-								</Link>
-							</p>
-						</div>
+				{error && (
+					<div style={{
+						padding: 'var(--space-md)',
+						backgroundColor: '#ff6666',
+						color: 'var(--pure-white)',
+						borderRadius: 'var(--radius-sharp)',
+						marginBottom: 'var(--space-lg)',
+						fontSize: '0.875rem',
+						fontWeight: 'var(--font-weight-bold)',
+						textTransform: 'uppercase',
+						letterSpacing: '0.05em'
+					}}>
+						{error}
 					</div>
+				)}
+
+				<form onSubmit={handleSubmit}>
+					<div style={{ marginBottom: 'var(--space-lg)' }}>
+						<label htmlFor="email" className="form-label">
+							Email Address
+						</label>
+						<input
+							type="email"
+							className="form-control"
+							id="email"
+							name="email"
+							value={formData.email}
+							onChange={handleChange}
+							required
+						/>
+					</div>
+
+					<div style={{ marginBottom: 'var(--space-xl)' }}>
+						<label htmlFor="password" className="form-label">
+							Password
+						</label>
+						<input
+							type="password"
+							className="form-control"
+							id="password"
+							name="password"
+							value={formData.password}
+							onChange={handleChange}
+							required
+						/>
+					</div>
+
+					<button
+						type="submit"
+						className="btn btn-primary"
+						disabled={isLoading}
+						style={{ width: '100%' }}
+					>
+						{isLoading ? "SIGNING IN..." : "SIGN IN"}
+					</button>
+				</form>
+
+				<div style={{ 
+					textAlign: 'center', 
+					marginTop: 'var(--space-xl)',
+					paddingTop: 'var(--space-lg)',
+					borderTop: '1px solid var(--concrete-gray)'
+				}}>
+					<p className="uppercase" style={{ 
+						fontSize: '0.875rem',
+						color: 'var(--industrial-gray)',
+						margin: '0 0 var(--space-sm) 0'
+					}}>
+						New to Chirp?
+					</p>
+					<Link to="/register" className="weight-black">
+						Create Account
+					</Link>
 				</div>
 			</div>
 		</div>
