@@ -18,7 +18,7 @@ export const Navbar: React.FC = () => {
 
 	return (
 		<nav className="navbar">
-			<div className="container-fluid">
+			<div className="">
 				<Link className="navbar-brand" to="/">
 					CHIRP
 				</Link>
@@ -32,7 +32,10 @@ export const Navbar: React.FC = () => {
 							<Link className="nav-link uppercase weight-black" to="/explore">
 								Explore
 							</Link>
-							<Link className="nav-link uppercase weight-black" to={`/profile/${user?.username}`}>
+							<Link
+								className="nav-link uppercase weight-black"
+								to={`/profile/${user?.username}`}
+							>
 								Profile
 							</Link>
 							<button className="btn btn-outline" onClick={handleLogout}>

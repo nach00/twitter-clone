@@ -36,7 +36,7 @@
 }
 
 .sidebar-widget::after {
-	content: '';
+	content: "";
 	position: absolute;
 	top: 4px;
 	left: 4px;
@@ -66,7 +66,7 @@
 }
 
 .hero-section::before {
-	content: 'SOCIAL MEDIA';
+	content: "SOCIAL MEDIA";
 	position: absolute;
 	top: var(--space-md);
 	right: var(--space-md);
@@ -96,12 +96,12 @@
 
 /* Authentication Layout */
 .auth-layout {
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	display: flex;
-	align-items: center;
+	align-items: top;
 	justify-content: center;
 	background: var(--off-white);
-	padding: var(--space-xxl);
+	/* padding: var(--space-xxl); */
 }
 
 .auth-card {
@@ -110,12 +110,12 @@
 	background: var(--pure-white);
 	border: 3px solid var(--pure-black);
 	border-radius: var(--radius-sharp);
-	padding: var(--space-xxxxl);
+	padding: var(--space-xxl);
 	position: relative;
 }
 
 .auth-card::after {
-	content: '';
+	content: "";
 	position: absolute;
 	top: 6px;
 	left: 6px;
@@ -146,7 +146,7 @@
 }
 
 .tweet-composer::before {
-	content: 'POST';
+	content: "POST";
 	position: absolute;
 	top: var(--space-sm);
 	right: var(--space-sm);
@@ -203,7 +203,11 @@
 
 .profile-banner {
 	height: 200px;
-	background: linear-gradient(45deg, var(--pure-black) 0%, var(--industrial-gray) 100%);
+	background: linear-gradient(
+		45deg,
+		var(--pure-black) 0%,
+		var(--industrial-gray) 100%
+	);
 	border: 3px solid var(--pure-black);
 	border-radius: var(--radius-sharp);
 	position: relative;
@@ -257,11 +261,11 @@
 		grid-template-columns: 1fr;
 		gap: var(--space-lg);
 	}
-	
+
 	.main-content {
 		grid-column: 1;
 	}
-	
+
 	.sidebar-left,
 	.sidebar-right {
 		display: none;
@@ -272,15 +276,15 @@
 	.main-layout {
 		padding: var(--space-md);
 	}
-	
+
 	.hero-section {
 		padding: var(--space-xl) var(--space-md);
 	}
-	
+
 	.auth-card {
 		padding: var(--space-xl);
 	}
-	
+
 	.profile-stats {
 		gap: var(--space-lg);
 	}

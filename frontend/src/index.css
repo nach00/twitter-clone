@@ -1,6 +1,6 @@
 /* frontend/src/index.css */
 /* Virgil Abloh-inspired Design System */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap");
 
 :root {
 	/* Virgil Abloh Color Palette */
@@ -12,7 +12,7 @@
 	--construction-yellow: #ffff00;
 	--concrete-gray: #c4c4c4;
 	--text-gray: #333333;
-	
+
 	/* Typography System */
 	--font-primary: "Inter", "Helvetica Neue", Arial, sans-serif;
 	--font-weight-light: 300;
@@ -20,7 +20,7 @@
 	--font-weight-medium: 500;
 	--font-weight-bold: 700;
 	--font-weight-black: 900;
-	
+
 	/* Spacing System - More Airy */
 	--space-xs: 8px;
 	--space-sm: 16px;
@@ -30,12 +30,12 @@
 	--space-xxl: 64px;
 	--space-xxxl: 96px;
 	--space-xxxxl: 128px;
-	
+
 	/* Border Radius */
 	--radius-none: 0;
 	--radius-sharp: 2px;
 	--radius-minimal: 4px;
-	
+
 	font-family: var(--font-primary);
 	line-height: 1.4;
 	font-weight: var(--font-weight-regular);
@@ -77,15 +77,19 @@ body {
 }
 
 /* Reset and base styles */
-input, textarea, button {
+input,
+textarea,
+button {
 	font-family: inherit;
+	width: 100%;
 }
 
 button {
 	cursor: pointer;
 }
 
-ul, ol {
+ul,
+ol {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -103,7 +107,12 @@ img {
 /* === VIRGIL ABLOH DESIGN SYSTEM === */
 
 /* Typography Hierarchy */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-family: var(--font-primary);
 	font-weight: var(--font-weight-black);
 	text-transform: uppercase;
@@ -161,7 +170,7 @@ h6 {
 }
 
 .industrial-border::before {
-	content: '';
+	content: "";
 	position: absolute;
 	top: -2px;
 	left: -2px;
@@ -232,7 +241,7 @@ h6 {
 }
 
 .card::after {
-	content: '';
+	content: "";
 	position: absolute;
 	top: 4px;
 	left: 4px;
@@ -274,7 +283,7 @@ h6 {
 }
 
 .navbar-brand::after {
-	content: ' SOCIAL';
+	content: " SOCIAL";
 	color: var(--signature-orange);
 	font-size: 0.7em;
 	vertical-align: super;
@@ -408,7 +417,7 @@ h6 {
 }
 
 .profile-header::before {
-	content: 'USER';
+	content: "USER";
 	position: absolute;
 	top: var(--space-md);
 	right: var(--space-md);
@@ -465,7 +474,7 @@ a:hover {
 }
 
 .deconstructed::after {
-	content: '';
+	content: "";
 	position: absolute;
 	top: 2px;
 	left: 2px;
@@ -519,15 +528,15 @@ main {
 	.container-fluid {
 		padding: 0 var(--space-md);
 	}
-	
+
 	.card {
 		padding: var(--space-md);
 	}
-	
+
 	.tweet-card {
 		padding: var(--space-md);
 	}
-	
+
 	h1 {
 		font-size: 2rem;
 	}
@@ -535,7 +544,12 @@ main {
 
 /* Loading States */
 .loading {
-	background: linear-gradient(90deg, var(--concrete-gray) 25%, transparent 50%, var(--concrete-gray) 75%);
+	background: linear-gradient(
+		90deg,
+		var(--concrete-gray) 25%,
+		transparent 50%,
+		var(--concrete-gray) 75%
+	);
 	background-size: 200% 100%;
 	animation: loading 1.5s infinite;
 }
