@@ -5,7 +5,21 @@ class TweetSerializer
   attributes :id, :message, :likes_count, :created_at, :updated_at
 
   attribute :user do |tweet|
-    UserSerializer.new(tweet.user).serializable_hash[:data][:attributes]
+    if tweet.user
+      {
+        id: tweet.user.id,
+        username: tweet.user.username,
+        email: tweet.user.email,
+        bio: tweet.user.bio,
+        profile_picture_url: tweet.user.profile_picture_url,
+        tweets_count: tweet.user.tweets_count,
+        followers_count: tweet.user.followers_count,
+        following_count: tweet.user.following_count,
+        created_at: tweet.user.created_at
+      }
+    else
+      nil
+    end
   end
 
   attribute :image_url do |tweet|

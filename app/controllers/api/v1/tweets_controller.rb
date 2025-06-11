@@ -41,6 +41,8 @@ module Api
         @tweet = current_user.tweets.build(tweet_params)
 
         if @tweet.save
+          # Reload with includes to ensure user data is available
+          @tweet = Tweet.with_includes.find(@tweet.id)
           render json: TweetSerializer.new(@tweet, { params: { current_user: current_user } }).serializable_hash, status: :created
         else
           render json: { errors: @tweet.errors.full_messages }, status: :unprocessable_entity
@@ -84,7 +86,7 @@ module Api
       private
 
       def set_tweet
-        @tweet = Tweet.find(params[:id])
+        @tweet = Tweet.with_includes.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         render json: { error: 'Tweet not found' }, status: :not_found
       end
