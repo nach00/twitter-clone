@@ -8,7 +8,11 @@ class ApplicationController < ActionController::API
 
   def fallback_index_html
     respond_to do |format|
-      format.html { render file: Rails.public_path.join('dist', 'index.html'), layout: false }
+      # Try both locations: /public/index.html and /public/dist/index.html
+      index_path = Rails.public_path.join('index.html')
+      index_path = Rails.public_path.join('dist', 'index.html') unless File.exist?(index_path)
+      
+      format.html { render file: index_path, layout: false }
       format.all { render json: { error: 'Not Found' }, status: :not_found }
     end
   rescue ActionView::MissingTemplate
@@ -19,7 +23,9 @@ class ApplicationController < ActionController::API
 
   def serve_frontend_asset
     asset_path = params[:path]
-    file_path = Rails.public_path.join('dist', 'assets', asset_path)
+    # Try both locations: /public/assets/ and /public/dist/assets/
+    file_path = Rails.public_path.join('assets', asset_path)
+    file_path = Rails.public_path.join('dist', 'assets', asset_path) unless File.exist?(file_path)
     
     if File.exist?(file_path)
       content_type = case File.extname(asset_path)

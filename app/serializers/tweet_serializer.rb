@@ -4,7 +4,9 @@ class TweetSerializer
 
   attributes :id, :message, :likes_count, :created_at, :updated_at
 
-  belongs_to :user, serializer: UserSerializer
+  attribute :user do |tweet|
+    UserSerializer.new(tweet.user).serializable_hash[:data][:attributes]
+  end
 
   attribute :image_url do |tweet|
     tweet.image_url if tweet.image.attached?
